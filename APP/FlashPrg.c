@@ -15,7 +15,7 @@ int Init(unsigned long adr, unsigned long clk, unsigned long fnc)
 {
 	QSPI_InitStructure QSPI_initStruct;
 	
-	if(fnc == 1)
+	if((fnc == 1) || (fnc == 2) || (fnc == 3))
 	{
 		__disable_irq();
 		
@@ -64,13 +64,12 @@ int Init(unsigned long adr, unsigned long clk, unsigned long fnc)
 			return 1;
 		}
 	}
-	else if(fnc == 2)
+	
+	if(fnc == 3)
 	{
+		QSPI_MemoryMap(QSPI0, 4, 4);
 	}
-	else if(fnc == 3)
-	{
-	}
-
+	
 	return 0;
 }
 
